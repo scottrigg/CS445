@@ -17,14 +17,26 @@ public class TestCreature {
 			thingArray[i] = new Thing("Scott"+i);
 		}
 		
-		thingArray[0] = new Tiger("Tony");
-		thingArray[1] = new Tiger("Timmy");
-		thingArray[2] = new Tiger("Tommy");
+		thingArray[THING_COUNT-1] = new Tiger("Tony");
+		thingArray[THING_COUNT-2] = new Tiger("Timmy");
+		thingArray[THING_COUNT-3] = new Tiger("Tommy");
 		
 		System.out.println("Things:\n");
 		for(int j=0;j<THING_COUNT;j++)
 		{
 			System.out.println(thingArray[j]);
+		}
+		
+		//Part2
+		Creature[] creatureArray = new Creature[CREATURE_COUNT];
+		creatureArray[0] = new Bat("Bruce");
+		creatureArray[1] = new Fly("Fred");
+		creatureArray[2] = new Ant("Andy");
+		
+		System.out.println("\nCreatures:\n");
+		for(int k = 0; k<CREATURE_COUNT; k++)
+		{
+			System.out.println(creatureArray[k]);
 		}
 		
 	}
