@@ -12,19 +12,18 @@ public class Fly extends Creature implements Flyer{
 	}
 
 	@Override
-	public String eat(Thing thing)
+	public void eat(Thing thing)
 	{
-		String m;
+		
 		String cName = thing.getClass().getSimpleName();
 		if(!(cName.equals("Thing")) )
 		{
-			m = toString() + " won't eat a " + thing.getClass().getSimpleName() + ".";
+			System.out.println(this.toString()+ " won't eat a " + thing.toString() + ".");
 		}
 		else
 		{
-			m = super.eat(thing);
+			super.eat(thing);
 		}
-		return m;
 	}
 	
 	@Override
