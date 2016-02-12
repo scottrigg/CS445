@@ -4,14 +4,39 @@
  * 2/10/16
  *
  */
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+
 
 public class BatTest {
 
 	public BatTest()
 	{
 		
+	}
+	
+	//ByteArrayOutputStream is used to capture the output from System.out
+	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	Bat testBat;
+	
+	
+	@Before
+	public void setUpStreams()
+	{
+		System.setOut(new PrintStream(outContent));
+		testBat = new Bat("Bill");
+	}
+	
+	@After
+	public void cleanUpStreams()
+	{
+		System.setOut(null);
 	}
 	
 	//Test of the toString method for the Thing class
@@ -30,26 +55,50 @@ public class BatTest {
 	public void testMove()
 	{
 		System.out.println("test: move");
-		Bat inst = new Bat("Bill");
-		//inst.move();
-		String exp = "Bill Bat is swooping through the dark.";
-		//String res = inst.move();
-		assertEquals(exp,inst.toString());
+		testBat.move();
+		assertTrue(outContent.toString().contains("Bill Bat is swooping through the dark."));
 		
 	}
 	
 	//Test of the Creature class eat method
 	@Test
-	public void testEat()
+	public void testCanEat() throws Exception
 	{
-		System.out.println("test: eat");
-		Ant food = new Ant("Anthony");
-		Bat inst = new Bat("Bill");
-		inst.eat(food);
-		String exp = "Bill Bat has just eaten a Ant.";
-		//String res = inst.eat(food);
-		assertEquals(exp,inst.toString());
+		testBat.eat(new Ant("food"));
+		assertTrue(outContent.toString().contains("Bill Bat has eaten a food Ant."));
 	}
 	
+
 	
+	 @Test
+	 public void testFly() throws Exception 
+	 {
+		 testBat.fly();
+		 assertTrue(outContent.toString().contains("Bill Bat is swooping through the dark."));
+	 }
+	
+	@Test 
+	public void testCantEat() throws Exception
+	{
+		//System.out.println("test: eat");
+	
+		testBat.eat(new Thing("Junk"));
+		assertTrue(outContent.toString().contains("Bill Bat won't eat a Junk Thing."));
+	}
+	
+	@Test
+	public void testWhatDidYouEat1() throws Exception
+	{
+		testBat.whatDidYouEat();
+		assertTrue(outContent.toString().contains("Bill Bat has had nothing to eat!"));
+	}
+	
+	@Test
+	public void testWhatDidYouEat2() throws Exception
+	{
+		testBat.eat(new Ant("ant_food"));
+		testBat.whatDidYouEat();
+		assertTrue(outContent.toString().contains("Bill Bat has eaten a ant_food Ant"));
+	}
+	 
 }
