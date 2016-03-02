@@ -1,5 +1,9 @@
+/**
+ * @author Scott Rigg
+ */
 package tablelamp;
 import button.Button;
+import button.PushdownButton;
 import lightbulb.Lightbulb;
 
 public class Main {
@@ -11,7 +15,10 @@ public class Main {
 		bttn.switchOn();
 		bttn.switchOff();
 		
-		
+		PushdownButton pdb = new PushdownButton(bulb);
+		pdb.PushButton();
+		pdb.PushButton();
 	}
 	
 }
+
