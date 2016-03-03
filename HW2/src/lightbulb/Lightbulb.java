@@ -4,7 +4,7 @@
  *
  */
 package lightbulb;
-public class Lightbulb {
+public class Lightbulb implements LightbulbInt {
 
 	public void on()
 	{
