@@ -2,12 +2,12 @@
  * @author Scott Rigg
  */
 package button;
-import lightbulb.Lightbulb;
+import lightbulb.LightbulbInt;
 public class PushdownButton {
 
 	
-	private Lightbulb lbulb;
-	public PushdownButton(Lightbulb lb)
+	private LightbulbInt lbulb;
+	public PushdownButton(LightbulbInt lb)
 	{
 		lbulb = lb;
 	}
