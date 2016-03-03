@@ -4,25 +4,25 @@
  *
  */
 package button;
-import lightbulb.Lightbulb;
+import lightbulb.LightbulbInt;
 public class Button {
 
-	private Lightbulb lbulb;
-	public Button(Lightbulb lb)
+	private LightbulbInt lbulbi;
+	public Button(LightbulbInt lb)
 	{
-		lbulb = lb;
+		lbulbi = lb;
 	}
 	
 	public void switchOn()
 	{
 		System.out.println("Button switched to ON");
-		lbulb.on();
+		lbulbi.on();
 	}
 	
 	public void switchOff()
 	{
 		System.out.println("Button switched to OFF");
-		lbulb.off();
+		lbulbi.off();
 	}
 	
 	
